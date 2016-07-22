@@ -78,7 +78,7 @@ var streamerList = {
 
 // Should pass in this.onSuccess for the callback
 var twitchRequest = {
-  twitchCall: function(streamName, callback){
+  twitchCall: function(streamName, callbackFunction){
     var data;
     var request = new XMLHttpRequest();
     request.open('GET', 'https://api.twitch.tv/kraken/streams/' + streamName + '?', true);
@@ -86,18 +86,21 @@ var twitchRequest = {
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
         data = JSON.parse(request.responseText);
-				console.log(data);
-        callback(null, data);
+        callbackFunction(null, data);
       }
     };
 
     request.onerror = function() {
       console.log('error');
-      callback('error', null);
+      callbackFunction('error', null);
     };
 
     request.send();
   },
+
+	onSuccess: function(error, data){
+    console.log('success!', data);
+	}
 };
 
 
