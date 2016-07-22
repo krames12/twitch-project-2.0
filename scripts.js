@@ -98,6 +98,8 @@ var twitchRequest = {
 
     request.send();
   },
+};
+
 
 var view = {
   displayStreams: function(){
