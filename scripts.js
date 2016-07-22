@@ -98,31 +98,6 @@ var twitchRequest = {
 
     request.send();
   },
-  
-	// the jQuery way, which is doing the exact same thing response time wise.
-  twitchCalled: function(streamName){
-    $.ajax({
-      url: 'https://api.twitch.tv/kraken/streams/' + streamName + '?callback?',
-      datatype: 'jsonp',
-      success: function(data) {
-        console.log('the stuff', data);
-        if(data.stream) {
-          console.log('online');
-        } else {
-          console.log('offline');
-        }
-      },
-      error: function(){
-        console.log('error! error!');
-      }
-    });
-  },
-	
-	onSuccess: function(error, data){
-    console.log('success!', data);
-	}
-};
-
 
 var view = {
   displayStreams: function(){
