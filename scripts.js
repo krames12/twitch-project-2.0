@@ -42,12 +42,12 @@ Object Planning Structure {
 var streamerList = {
   streamers: [],
   
-  addStream: function(isOnline, streamName, streamData) {
-    if(isOnline === true){
+  addStream: function(streamData) {
+    if(streamData.stream){
     this.streamers.push({
-      streamName: streamName,
+      streamName: streamData.stream.channel.display_name,
       currentGame: streamData.stream.channel.game,
-      streamUrl: 'https://twitch.tv/' + streamName,
+      streamUrl: streamData.stream.channel.url,
       profilePicture: streamData.stream.channel.logo
     });
     } else {
@@ -99,7 +99,8 @@ var twitchRequest = {
   },
 
 	onSuccess: function(error, data){
-    console.log('success!', data);
+    console.log("the data:", data);
+    streamerList.addStream(data);
 	}
 };
 
@@ -108,22 +109,16 @@ var view = {
   displayStreams: function(){
     var streamDocumentList = document.querySelector('ul');
     console.log(streamerList.streamers);
+  },
+
+  streamTemplate: function(streamData) {
+
   }
 }
-
+  
 var handlers = {
   addStreamInput: function(streamName){
-    var streamData = twitchRequest.twitchCall(streamName);
-    
-    var streamState;
-    
-    if(data.stream === null){
-      streamState = false;
-    } else {
-      streamState = true;
-    }
-    console.log(streamState);
-    streamerList.addStream(streamState, streamName, streamData);
+    twitchRequest.twitchCall(streamName, twitchRequest.onSuccess);
   },
  
   deleteStreamItem: function(position) {}
