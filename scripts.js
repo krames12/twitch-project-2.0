@@ -42,7 +42,7 @@ Object Planning Structure {
 var streamerList = {
   streamers: [],
   
-  addStream: function(streamData) {
+  addStream: function(streamData, streamName) {
     if(streamData.stream){
     this.streamers.push({
       streamName: streamData.stream.channel.display_name,
@@ -86,7 +86,7 @@ var twitchRequest = {
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
         data = JSON.parse(request.responseText);
-        callbackFunction(null, data);
+        callbackFunction(null, data, streamName);
       }
     };
 
@@ -98,9 +98,8 @@ var twitchRequest = {
     request.send();
   },
 
-	onSuccess: function(error, data){
-    console.log("the data:", data);
-    streamerList.addStream(data);
+	onSuccess: function(error, data, streamName){
+    streamerList.addStream(data, streamName);
 	}
 };
 
@@ -108,7 +107,7 @@ var twitchRequest = {
 var view = {
   displayStreams: function(){
     var streamDocumentList = document.querySelector('ul');
-    console.log(streamerList.streamers);
+    console.log('streamer list:', streamerList.streamers);
   },
 
   streamTemplate: function(streamData) {
