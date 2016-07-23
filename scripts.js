@@ -65,15 +65,16 @@ var streamerList = {
     view.displayStreams();
   },
   
-  streamStatus: function(streamData) {
-    if(streamData.stream === true) {
-      return true;
-    } else {
-      return false;
+  //will check for duplicates at a later date. Just need to get the MVP working
+  checkDuplicateStream: function(streamData, streamName) {
+    for(var i = 0; i < streamerList.streamers.length; i++){
+      if(streamerList.streamers[i].streamName !== streamName) {
+        streamerList.addStream(streamData, streamName);
+      } else {
+        console.log('Stream already listed.');
+      }
     }
-  },
-  
-  checkDuplicateStream: function(streamData) {}
+  }
 }
 
 // Should pass in this.onSuccess for the callback
@@ -97,11 +98,11 @@ var twitchRequest = {
 
     request.send();
   },
-
 	onSuccess: function(error, data, streamName){
     streamerList.addStream(data, streamName);
 	}
 };
+
 
 
 var view = {
