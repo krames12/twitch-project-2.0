@@ -120,7 +120,7 @@ var view = {
 
   streamOnlineTemplate: function() {
     var streamOnlineTemplate = document.createElement('li');
-
+    
   },
 
   streamOfflineTemplate: function() {
