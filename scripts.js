@@ -111,8 +111,8 @@ var twitchRequest = {
 var view = {
   displayStreams: function(){
     //Clear and refresh the list of streams every time one is added or deleted
-    var streamDocumentUl = document.getElementById('stream-list');
-    streamDocumentUl.innerHtml = '';
+    var streamDocumentUl = document.querySelector('#stream-list');
+    streamDocumentUl.innerHTML = '';
 
     streamerList.streamers.forEach(function(stream, position) {
       var streamerLi = document.createElement('li');
