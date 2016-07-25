@@ -48,12 +48,14 @@ var streamerList = {
       streamName: streamData.stream.channel.display_name,
       currentGame: streamData.stream.channel.game,
       streamUrl: streamData.stream.channel.url,
-      profilePicture: streamData.stream.channel.logo
+      profilePicture: streamData.stream.channel.logo,
+      isOnline: true
     });
     } else {
       this.streamers.push({
        streamName: streamName,
        streamUrl: 'https://twitch.tv/' + streamName,
+       isOnline: false
       });
     }
     
@@ -98,6 +100,7 @@ var twitchRequest = {
 
     request.send();
   },
+  //Sends successful info and name to the addStream method
 	onSuccess: function(error, data, streamName){
     streamerList.addStream(data, streamName);
 	}
@@ -107,17 +110,41 @@ var twitchRequest = {
 
 var view = {
   displayStreams: function(){
-    var streamDocumentList = document.querySelector('ul');
-    console.log('streamer list:', streamerList.streamers);
+    var streamDocumentUl = document.querySelector('ul');
+    streamDocumentUl.innerHtml = '';
+
+    streamerList.streamers.forEach(function(stream, position)) {
+      
+    }    
   },
 
-  streamTemplate: function(streamData) {
+  streamOnlineTemplate: function() {
+    var streamOnlineTemplate = document.createElement('li');
 
+  },
+
+  streamOfflineTemplate: function() {
+
+  },
+
+  createDeleteButton: function() {
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent = 'X';
+    deleteButton.className = 'deleteButton';
+    return deleteButton;
+  },
+
+  createStreamStatusIcon: function() {
+    var streamStatusIcon = document.createElement('div');
+    streamStatusIcon.className = 'streamStatusIcon';
+    return streamStatusIcon;
   }
+
 }
   
 var handlers = {
   addStreamInput: function(streamName){
+    //Performs request to Twitch API
     twitchRequest.twitchCall(streamName, twitchRequest.onSuccess);
   },
  
