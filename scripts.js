@@ -110,20 +110,27 @@ var twitchRequest = {
 
 var view = {
   displayStreams: function(){
-    var streamDocumentUl = document.querySelector('ul');
+    //Clear and refresh the list of streams every time one is added or deleted
+    var streamDocumentUl = document.getElementById('stream-list');
     streamDocumentUl.innerHtml = '';
 
-    streamerList.streamers.forEach(function(stream, position)) {
-      
-    }    
+    streamerList.streamers.forEach(function(stream, position) {
+      var streamerLi = document.createElement('li');
+      streamerLi.className = 'streamerLi';
+      console.log(stream, position);
+
+      streamerLi.appendChild(this.createDeleteButton());
+      streamerLi.appendChild(this.createStreamStatusIcon());
+      streamDocumentUl.appendChild(streamerLi);
+
+    }, this);  
   },
 
-  streamOnlineTemplate: function() {
-    var streamOnlineTemplate = document.createElement('li');
+  streamOnline: function() {
     
   },
 
-  streamOfflineTemplate: function() {
+  streamOffline: function() {
 
   },
 
@@ -139,7 +146,6 @@ var view = {
     streamStatusIcon.className = 'streamStatusIcon';
     return streamStatusIcon;
   }
-
 }
   
 var handlers = {
