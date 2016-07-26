@@ -114,20 +114,28 @@ var view = {
     var streamDocumentUl = document.querySelector('#stream-list');
     streamDocumentUl.innerHTML = '';
 
-    streamerList.streamers.forEach(function(stream, position) {
+    streamerList.streamers.forEach(function(streamInfo, position) {
       var streamerLi = document.createElement('li');
       streamerLi.className = 'streamerLi';
-      console.log(stream, position);
+      console.log(streamInfo, position);
       
+      if(streamInfo.isOnline) {
+        streamerLi.appendChild(this.streamOnline(streamInfo));
+      } else {
+        streamerLi.appendChild(this.streamOffline(streamInfo));
+      }
+
       streamerLi.appendChild(this.createDeleteButton());
-      streamerLi.appendChild(this.createStreamStatusIcon());
+      streamerLi.appendChild(this.createStreamStatusIcon(streamInfo));
       streamDocumentUl.appendChild(streamerLi);
 
     }, this);  
   },
 
   streamOnline: function() {
-    
+    var streamInfoDiv = document.createElement('div');
+    streamInfoDiv.className = 'streamInfoDiv';
+    return streamInfoDiv;
   },
 
   streamOffline: function() {
@@ -141,9 +149,15 @@ var view = {
     return deleteButton;
   },
 
-  createStreamStatusIcon: function() {
+  createStreamStatusIcon: function(streamInfo) {
     var streamStatusIcon = document.createElement('div');
-    streamStatusIcon.className = 'streamStatusIcon';
+
+    if(streamInfo.isOnline === true) {
+      streamStatusIcon.className = 'streamStatusIcon, isOnline';
+    } else {
+      streamStatusIcon.className = 'streamStatusIcon, isOffline';
+    }
+
     return streamStatusIcon;
   },
 
