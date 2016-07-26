@@ -118,7 +118,7 @@ var view = {
       var streamerLi = document.createElement('li');
       streamerLi.className = 'streamerLi';
       console.log(stream, position);
-
+      
       streamerLi.appendChild(this.createDeleteButton());
       streamerLi.appendChild(this.createStreamStatusIcon());
       streamDocumentUl.appendChild(streamerLi);
@@ -145,6 +145,18 @@ var view = {
     var streamStatusIcon = document.createElement('div');
     streamStatusIcon.className = 'streamStatusIcon';
     return streamStatusIcon;
+  },
+
+  eventHandlerSetUp: function() {
+    var streamDocumentUl = document.querySelector('#stream-list');
+
+    streamDocumentUl.addEventListener('click', function(event) {
+      var elementClicked = event.target;
+
+      if(elementClicked.className === 'deleteButton') {
+        handlers.deleteStreamItem(parseInt(elementClicked.parentNode.id));
+      }
+    });
   }
 }
   
@@ -154,5 +166,10 @@ var handlers = {
     twitchRequest.twitchCall(streamName, twitchRequest.onSuccess);
   },
  
-  deleteStreamItem: function(position) {}
+  deleteStreamItem: function(position) {
+    streamerList.deleteStream(position);
+    view.displayStreams();
+  }
 }
+
+view.eventHandlerSetUp();
