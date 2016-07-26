@@ -118,28 +118,12 @@ var view = {
       var streamerLi = document.createElement('li');
       streamerLi.className = 'streamerLi';
       console.log(streamInfo, position);
-      
-      if(streamInfo.isOnline) {
-        streamerLi.appendChild(this.streamOnline(streamInfo));
-      } else {
-        streamerLi.appendChild(this.streamOffline(streamInfo));
-      }
 
       streamerLi.appendChild(this.createDeleteButton());
       streamerLi.appendChild(this.createStreamStatusIcon(streamInfo));
       streamDocumentUl.appendChild(streamerLi);
 
     }, this);  
-  },
-
-  streamOnline: function() {
-    var streamInfoDiv = document.createElement('div');
-    streamInfoDiv.className = 'streamInfoDiv';
-    return streamInfoDiv;
-  },
-
-  streamOffline: function() {
-
   },
 
   createDeleteButton: function() {
@@ -153,9 +137,9 @@ var view = {
     var streamStatusIcon = document.createElement('div');
 
     if(streamInfo.isOnline === true) {
-      streamStatusIcon.className = 'streamStatusIcon, isOnline';
+      streamStatusIcon.className = 'streamStatusIcon isOnline';
     } else {
-      streamStatusIcon.className = 'streamStatusIcon, isOffline';
+      streamStatusIcon.className = 'streamStatusIcon isOffline';
     }
 
     return streamStatusIcon;
