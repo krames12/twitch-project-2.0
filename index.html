@@ -1,46 +1,37 @@
-<!-- This is a static file -->
-  <!-- served from your routes in server.js -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Twitch Streams 2.0</title>
+    <meta name="description" content="Twitch Stream List">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Twitch Stream List</h1>
+    </header>
+
+    <main>
+      <nav>
+        <ul id='main-nav'>
+          <li class='status-item' id='status-all'>All</li>
+          <li class='status-item' id='status-online'>Online</li>
+          <li class='status-item' id='status-offline'>Offline</li>
+        </ul>
+      </nav>
+      <form id='add-stream' onsubmit="handlers.addStreamInput(); return false;">
+        <input type='text' id='add-stream-input' />
+      </form>
+      <ul id='stream-list'></ul>
+    </main>
   
-  <!-- You might want to try something fancier: -->
-  <!-- html/nunjucks docs: http://mozilla.github.io/nunjucks/ -->
-  <!-- jade: http://jade-lang.com/ -->
-  <!-- haml: http://haml.info/tutorial.html -->
-  <!-- hbs(handlebars): http://handlebarsjs.com/expressions.html -->
+    <footer>
+    </footer>
   
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <title>Twitch Streams 2.0</title>
-      <meta name="description" content="Twitch Stream List">
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="reset.css">
-      <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-      <header>
-        <h1>Twitch Stream List</h1>
-      </header>
+    <script src="scripts.js"></script>
   
-      <main>
-        <nav>
-          <ul id='main-nav'>
-            <li class='status-item' id='status-all'>All</li>
-            <li class='status-item' id='status-online'>Online</li>
-            <li class='status-item' id='status-offline'>Offline</li>
-          </ul>
-        </nav>
-        <form id='add-stream' onsubmit="function(); return false;">
-          <input type='text' />
-        </form>
-        <ul id='stream-list'></ul>
-      </main>
-  
-      <footer>
-      </footer>
-  
-      <script src="scripts.js"></script>
-  
-    </body>
+  </body>
 </html>

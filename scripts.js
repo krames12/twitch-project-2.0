@@ -58,13 +58,10 @@ var streamerList = {
        isOnline: false
       });
     }
-    
-    view.displayStreams();
   },
   
   deleteStream: function(position) {
     this.streamers.splice(position, 1);
-    view.displayStreams();
   },
   
   //will check for duplicates at a later date. Just need to get the MVP working
@@ -135,6 +132,10 @@ var view = {
     return streamInfoDiv;
   },
 
+  createStreamAvatar: function(streamInfo) {
+    
+  },
+
   createStreamName: function(streamName) {
     var name = document.createElement('a');
     name.innerHTML = '<h4>' + streamName + '</h4>';
@@ -188,9 +189,14 @@ var view = {
 }
   
 var handlers = {
-  addStreamInput: function(streamName){
+  addStreamInput: function(){
+    debugger;
+    var addStreamInput = document.querySelector('#add-stream-input');
     //Performs request to Twitch API
-    twitchRequest.twitchCall(streamName, twitchRequest.onSuccess);
+    twitchRequest.twitchCall(addStreamInput.value, twitchRequest.onSuccess);
+    console.log('finished requesting and adding stream');
+    view.displayStreams();
+    addStreamInput.value = '';
   },
  
   deleteStreamItem: function(position) {
