@@ -58,9 +58,12 @@ var streamerList = {
        isOnline: false
       });
     }
+
+    view.displayStreams();
   },
   
   deleteStream: function(position) {
+    console.log('deleting position', position);
     this.streamers.splice(position, 1);
   },
   
@@ -113,8 +116,9 @@ var view = {
 
     streamerList.streamers.forEach(function(streamInfo, position) {
       var streamerLi = document.createElement('li');
+      streamerLi.id = position;
       streamerLi.className = 'streamerLi';
-      console.log(streamInfo, position);
+      console.log(streamInfo.streamName, position);
 
       streamerLi.appendChild(this.createStreamInfoDiv(streamInfo));
       streamerLi.appendChild(this.createStreamStatusIcon(streamInfo));
@@ -190,12 +194,9 @@ var view = {
   
 var handlers = {
   addStreamInput: function(){
-    debugger;
     var addStreamInput = document.querySelector('#add-stream-input');
     //Performs request to Twitch API
     twitchRequest.twitchCall(addStreamInput.value, twitchRequest.onSuccess);
-    console.log('finished requesting and adding stream');
-    view.displayStreams();
     addStreamInput.value = '';
   },
  
