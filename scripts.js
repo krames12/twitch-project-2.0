@@ -119,11 +119,40 @@ var view = {
       streamerLi.className = 'streamerLi';
       console.log(streamInfo, position);
 
-      streamerLi.appendChild(this.createDeleteButton());
+      streamerLi.appendChild(this.createStreamInfoDiv(streamInfo));
       streamerLi.appendChild(this.createStreamStatusIcon(streamInfo));
+      streamerLi.appendChild(this.createDeleteButton());
       streamDocumentUl.appendChild(streamerLi);
 
     }, this);  
+  },
+
+  createStreamInfoDiv: function(streamInfo) {
+    var streamInfoDiv = document.createElement('div');
+    streamInfoDiv.className = 'streamInfoDiv';
+    streamInfoDiv.appendChild(this.createStreamName(streamInfo.streamName));
+    streamInfoDiv.appendChild(this.createIsOnlineInfo(streamInfo));
+    return streamInfoDiv;
+  },
+
+  createStreamName: function(streamName) {
+    var name = document.createElement('a');
+    name.innerHTML = '<h4>' + streamName + '</h4>';
+    name.className = 'streamName';
+    return name;
+  },
+
+  createIsOnlineInfo: function(streamInfo) {
+    var onlineStatus = document.createElement('p');
+    onlineStatus.className = 'streamOnlineStatus';
+
+    if(streamInfo.isOnline) {
+      onlineStatus.textContent = streamInfo.currentGame;
+    } else {
+      onlineStatus.textContent = 'Offline';
+    }
+
+    return onlineStatus;
   },
 
   createDeleteButton: function() {
