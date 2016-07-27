@@ -102,6 +102,7 @@ var twitchRequest = {
   },
   //Sends successful info and name to the addStream method
 	onSuccess: function(error, data, streamName){
+    console.log(streamName, data);
     streamerList.addStream(data, streamName);
 	}
 };
@@ -188,6 +189,12 @@ var view = {
       if(elementClicked.className === 'deleteButton') {
         handlers.deleteStreamItem(parseInt(elementClicked.parentNode.id));
       }
+
+    var addStreamInput = document.querySelector('#add-stream-input');
+    addStreamInput.addEventListener('submit', function(event) {
+      event.preventDefault();
+    });
+
     });
   }
 }
