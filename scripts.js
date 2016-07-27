@@ -100,6 +100,28 @@ var twitchRequest = {
 
     request.send();
   },
+
+  // if the stream is offline, get info 
+  streamOfflineCall: function (streamName) {
+    var data;
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://api.twitch.tv/kraken/channels/' + streamName + '?', true);
+
+    request.onload = function() {
+      if (request.status >= 200 && request.status < 400) {
+        data = JSON.parse(request.responseText);
+        callbackFunction(null, data, streamName);
+      }
+    };
+
+    request.onerror = function() {
+      console.log('error');
+      callbackFunction('error', null);
+    };
+
+    request.send();
+  },
+
   //Sends successful info and name to the addStream method
 	onSuccess: function(error, data, streamName){
     console.log(streamName, data);
