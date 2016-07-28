@@ -72,10 +72,12 @@ var streamerList = {
   
   //will check for duplicates at a later date. Just need to get the MVP working
   checkDuplicateStream: function(streamName) {
-    debugger;
+    //crazy bug about reloading the page once it gets to streamName
     var isDuplicate = false;
-
-    streamerList.streamers.forEach(function(streamerData, position) {
+    console.log(streamName);
+    this.streamers.forEach(function(streamerData, position) {
+      console.log('inside forEach', streamName);
+      //console.log(streamerData[position].streamName.toLowerCase(), streamName.toLowerCase());
       if(streamerData[position].streamName.toLowerCase() == streamName.toLowerCase()) {
         isDuplicate = true;
         console.log('Stream already exists');
@@ -245,7 +247,7 @@ var view = {
 var handlers = {
   addStreamInput: function(){
     var addStreamInput = document.querySelector('#add-stream-input');
-    //Performs request to Twitch API
+    //Checks for duplicate streams entered
     streamerList.checkDuplicateStream(addStreamInput.value);
     addStreamInput.value = '';
   },
