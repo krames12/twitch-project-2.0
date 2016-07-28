@@ -42,22 +42,24 @@ Object Planning Structure {
 var streamerList = {
   streamers: [],
   
-  addStream: function(streamData, streamName) {
-    if(streamData.stream){
+  addOnlineStream: function(streamData) {
     this.streamers.push({
-      streamName: streamData.stream.channel.display_name,
-      currentGame: streamData.stream.channel.game,
-      streamUrl: streamData.stream.channel.url,
-      profilePicture: streamData.stream.channel.logo,
-      isOnline: true
+    streamName: streamData.stream.channel.display_name,
+    currentGame: streamData.stream.channel.game,
+    streamUrl: streamData.stream.channel.url,
+    profilePicture: streamData.stream.channel.logo,
+    isOnline: true
     });
-    } else {
-      this.streamers.push({
-       streamName: streamName,
-       streamUrl: 'https://twitch.tv/' + streamName,
-       isOnline: false
-      });
-    }
+
+    view.displayStreams();
+  },
+
+  addOfflineStream: function(streamData) {
+    this.streamers.push({
+      streamName: streamData.display_name,
+      streamUrl: streamData.url,
+      profilePicture: streamData.logo
+    });
 
     view.displayStreams();
   },
@@ -102,7 +104,7 @@ var twitchRequest = {
   },
 
   // if the stream is offline, get info 
-  streamOfflineCall: function (streamName) {
+  streamOfflineCall: function (streamName, callbackFunction) {
     var data;
     var request = new XMLHttpRequest();
     request.open('GET', 'https://api.twitch.tv/kraken/channels/' + streamName + '?', true);
@@ -122,11 +124,20 @@ var twitchRequest = {
     request.send();
   },
 
-  //Sends successful info and name to the addStream method
+  //Checks if the stream is currently online or offline
 	onSuccess: function(error, data, streamName){
     console.log(streamName, data);
-    streamerList.addStream(data, streamName);
-	}
+
+    if(data.stream === true){
+      streamerList.addOnlineStream(data, streamName);
+    } else {
+      twitchRequest.streamOfflineCall(streamName, twitchRequest.onStreamOfflineSuccess);
+    }
+	},
+
+  onStreamOfflineSuccess: function(error, data){
+    streamerList.addOfflineStream(data);
+  }
 };
 
 
