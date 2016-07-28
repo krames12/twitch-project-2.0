@@ -58,7 +58,8 @@ var streamerList = {
     this.streamers.push({
       streamName: streamData.display_name,
       streamUrl: streamData.url,
-      profilePicture: streamData.logo
+      profilePicture: streamData.logo,
+      isOnline: false
     });
 
     view.displayStreams();
@@ -70,13 +71,22 @@ var streamerList = {
   },
   
   //will check for duplicates at a later date. Just need to get the MVP working
-  checkDuplicateStream: function(streamData, streamName) {
-    for(var i = 0; i < streamerList.streamers.length; i++){
-      if(streamerList.streamers[i].streamName !== streamName) {
-        streamerList.addStream(streamData, streamName);
-      } else {
-        console.log('Stream already listed.');
+  checkDuplicateStream: function(streamName) {
+    debugger;
+    var isDuplicate = false;
+
+    streamerList.streamers.forEach(function(streamerData, position) {
+      if(streamerData[position].streamName.toLowerCase() == streamName.toLowerCase()) {
+        isDuplicate = true;
+        console.log('Stream already exists');
+        view.displayStreams();
       }
+    });
+
+    console.log('forEach is done. isDuplicate is:', isDuplicate);
+    
+    if(isDuplicate == false) {
+      twitchRequest.twitchCall(streamName, twitchRequest.onSuccess);
     }
   }
 }
@@ -236,7 +246,7 @@ var handlers = {
   addStreamInput: function(){
     var addStreamInput = document.querySelector('#add-stream-input');
     //Performs request to Twitch API
-    twitchRequest.twitchCall(addStreamInput.value, twitchRequest.onSuccess);
+    streamerList.checkDuplicateStream(addStreamInput.value);
     addStreamInput.value = '';
   },
  
