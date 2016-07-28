@@ -128,10 +128,10 @@ var twitchRequest = {
 	onSuccess: function(error, data, streamName){
     console.log(streamName, data);
 
-    if(data.stream === true){
-      streamerList.addOnlineStream(data, streamName);
-    } else {
+    if(data.stream === null){
       twitchRequest.streamOfflineCall(streamName, twitchRequest.onStreamOfflineSuccess);
+    } else {
+      streamerList.addOnlineStream(data, streamName);
     }
 	},
 
