@@ -74,10 +74,8 @@ var streamerList = {
   checkDuplicateStream: function(streamName) {
     //crazy bug about reloading the page once it gets to streamName
     var isDuplicate = false;
-    console.log(streamName);
+
     this.streamers.forEach(function(streamerData, position) {
-      console.log('inside forEach', streamName);
-      //console.log(streamerData[position].streamName.toLowerCase(), streamName.toLowerCase());
       if(streamerData.streamName.toLowerCase() == streamName.toLowerCase()) {
         isDuplicate = true;
         console.log('Stream already exists');
@@ -104,6 +102,8 @@ var twitchRequest = {
       if (request.status >= 200 && request.status < 400) {
         data = JSON.parse(request.responseText);
         callbackFunction(null, data, streamName);
+      } else if (request.status == 404) {
+        console.log('The stream', streamName, 'does not exist');
       }
     };
 
@@ -157,8 +157,10 @@ var twitchRequest = {
 var view = {
   displayStreams: function(){
     //Clear and refresh the list of streams every time one is added or deleted
-    var streamDocumentUl = document.querySelector('#stream-list');
-    streamDocumentUl.innerHTML = '';
+    var onlineStreamList = document.querySelector('#online-stream-list');
+    var offlineStreamList = document.querySelector('#offline-stream-list');
+    onlineStreamList.innerHTML = '';
+    offlineStreamList.innerHTML = '';
 
     streamerList.streamers.forEach(function(streamInfo, position) {
       var streamerLi = document.createElement('li');
@@ -169,7 +171,12 @@ var view = {
       streamerLi.appendChild(this.createStreamInfoDiv(streamInfo));
       streamerLi.appendChild(this.createStreamStatusIcon(streamInfo));
       streamerLi.appendChild(this.createDeleteButton());
-      streamDocumentUl.appendChild(streamerLi);
+
+      if(streamInfo.isOnline) {
+        onlineStreamList.appendChild(streamerLi);
+      } else {
+        offlineStreamList.appendChild(streamerLi);
+      }
 
     }, this);  
   },
