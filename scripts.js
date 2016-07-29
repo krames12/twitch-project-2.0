@@ -75,7 +75,7 @@ var streamerList = {
     //crazy bug about reloading the page once it gets to streamName
     var isDuplicate = false;
 
-    this.streamers.forEach(function(streamerData, position) {
+    this.streamers.forEach(function(streamerData) {
       if(streamerData.streamName.toLowerCase() == streamName.toLowerCase()) {
         isDuplicate = true;
         console.log('Stream already exists');
