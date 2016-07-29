@@ -70,7 +70,7 @@ var streamerList = {
     this.streamers.splice(position, 1);
   },
   
-  //will check for duplicates at a later date. Just need to get the MVP working
+  //Checks for duplicates and give error if that is the case
   checkDuplicateStream: function(streamName) {
     //crazy bug about reloading the page once it gets to streamName
     var isDuplicate = false;
@@ -78,7 +78,7 @@ var streamerList = {
     this.streamers.forEach(function(streamerData, position) {
       console.log('inside forEach', streamName);
       //console.log(streamerData[position].streamName.toLowerCase(), streamName.toLowerCase());
-      if(streamerData[position].streamName.toLowerCase() == streamName.toLowerCase()) {
+      if(streamerData.streamName.toLowerCase() == streamName.toLowerCase()) {
         isDuplicate = true;
         console.log('Stream already exists');
         view.displayStreams();
