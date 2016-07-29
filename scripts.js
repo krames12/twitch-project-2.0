@@ -184,13 +184,17 @@ var view = {
   createStreamInfoDiv: function(streamInfo) {
     var streamInfoDiv = document.createElement('div');
     streamInfoDiv.className = 'streamInfoDiv';
+    streamInfoDiv.appendChild(this.createStreamAvatar(streamInfo));
     streamInfoDiv.appendChild(this.createStreamName(streamInfo.streamName));
     streamInfoDiv.appendChild(this.createIsOnlineInfo(streamInfo));
     return streamInfoDiv;
   },
 
   createStreamAvatar: function(streamInfo) {
-    
+    var profileAvatar = new Image();
+    profileAvatar.src = streamInfo.profilePicture;
+    profileAvatar.className = 'profileAvatar';
+    return profileAvatar;
   },
 
   createStreamName: function(streamName) {
