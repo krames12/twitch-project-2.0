@@ -19,3 +19,7 @@
     width: 50px;
     border-radius: 50%;
 }
+
+.hidden {
+    display: none;
+}

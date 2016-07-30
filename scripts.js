@@ -178,7 +178,7 @@ var view = {
         offlineStreamList.appendChild(streamerLi);
       }
 
-    }, this);  
+    }, this);
   },
 
   createStreamInfoDiv: function(streamInfo) {
@@ -236,7 +236,41 @@ var view = {
     return streamStatusIcon;
   },
 
+  showAllStreams: function(element) {
+    var offlineStreams = document.querySelector('#offline-stream-list');
+    var onlineStreams = document.querySelector('#online-stream-list');
+
+    if(offlineStreams.classList.contains('hidden')) {
+      offlineStreams.classList.remove('hidden');
+    }
+
+    if(onlineStreams.classList.contains('hidden')) {
+      onlineStreams.classList.remove('hidden');
+    }
+  },
+
+  showOnlineOnly: function(element) {
+    var offlineStreams = document.querySelector('#offline-stream-list');
+    var onlineStreams = document.querySelector('#online-stream-list');
+
+    if(onlineStreams.classList.contains('hidden')) {
+      onlineStreams.classList.remove('hidden');
+    }
+    offlineStreams.classList.add('hidden');
+  },
+
+  showOfflineOnly: function() {
+    var offlineStreams = document.querySelector('#offline-stream-list');
+    var onlineStreams = document.querySelector('#online-stream-list');
+
+    if(offlineStreams.classList.contains('hidden')) {
+      offlineStreams.classList.remove('hidden');
+    }
+    onlineStreams.classList.add('hidden');
+  },
+
   eventHandlerSetUp: function() {
+    // Delete Stream button setup
     var streamDocumentUl = document.querySelector('#stream-list');
 
     streamDocumentUl.addEventListener('click', function(event) {
@@ -245,12 +279,18 @@ var view = {
       if(elementClicked.className === 'deleteButton') {
         handlers.deleteStreamItem(parseInt(elementClicked.parentNode.id));
       }
-
+    });
+    
+    // Add Stream Input event handler
     var addStreamInput = document.querySelector('#add-stream-input');
     addStreamInput.addEventListener('submit', function(event) {
       event.preventDefault();
     });
 
+    // Online only tab
+    var showOnlineOnly = document.querySelector('#status-online-only');
+    showOnlineOnly.addEventListener('click', function(event) {
+      view.showOnlineOnly();
     });
   }
 }
