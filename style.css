@@ -27,6 +27,20 @@ main {
     cursor: pointer;
 }
 
+#add-stream {
+    width: 95%;
+    margin: auto;
+}
+
+#add-stream-input {
+    width: 95%;
+    border-radius: 25px;
+    border: 1px solid #ecf0f1;
+    font-size: 1.2em;
+    padding: 8px;
+    margin: auto;
+}
+
 #stream-list {
     padding: 10px;
 }
