@@ -17,7 +17,7 @@ main {
 
 .status-item {
     display: table-cell;
-    padding: 10px;
+    padding: 20px;
     width: 32%;
 }
 
@@ -43,16 +43,25 @@ main {
 
 #stream-list {
     padding: 10px;
+    padding-bottom: 0px;
 }
 
 .streamerLi {
     border-bottom: 1px solid #ecf0f1;
 }
 
+.profileAvatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 10px, 5px;
+}
+
 .streamInfoDiv {
     display: inline-block;
     padding: 10px;
-    margin: 10px, 5px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .streamOnlineStatus {
@@ -77,13 +86,6 @@ main {
 
 .isOffline {
     background-color: grey;
-}
-
-.profileAvatar {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    margin: 10px, 5px;
 }
 
 .deleteButton {
