@@ -289,8 +289,20 @@ var view = {
 
     // Online only tab
     var showOnlineOnly = document.querySelector('#status-online-only');
-    showOnlineOnly.addEventListener('click', function(event) {
+    showOnlineOnly.addEventListener('click', function() {
       view.showOnlineOnly();
+    });
+
+    // Offline only tab
+    var showOfflineOnly = document.querySelector('#status-offline-only');
+    showOfflineOnly.addEventListener('click', function() {
+      view.showOfflineOnly();
+    });
+
+    // Show all streams tab
+    var showAllStreams = document.querySelector('#status-all');
+    showAllStreams.addEventListener('click', function() {
+      view.showAllStreams();
     });
   }
 }
