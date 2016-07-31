@@ -168,6 +168,7 @@ var view = {
       streamerLi.className = 'streamerLi';
       console.log(streamInfo.streamName, position);
 
+      streamerLi.appendChild(this.createStreamAvatar(streamInfo));
       streamerLi.appendChild(this.createStreamInfoDiv(streamInfo));
       streamerLi.appendChild(this.createStreamStatusIcon(streamInfo));
       streamerLi.appendChild(this.createDeleteButton());
@@ -184,7 +185,6 @@ var view = {
   createStreamInfoDiv: function(streamInfo) {
     var streamInfoDiv = document.createElement('div');
     streamInfoDiv.className = 'streamInfoDiv';
-    streamInfoDiv.appendChild(this.createStreamAvatar(streamInfo));
     streamInfoDiv.appendChild(this.createStreamName(streamInfo));
     streamInfoDiv.appendChild(this.createIsOnlineInfo(streamInfo));
     return streamInfoDiv;
