@@ -82,8 +82,6 @@ var streamerList = {
         view.displayStreams();
       }
     });
-
-    console.log('forEach is done. isDuplicate is:', isDuplicate);
     
     if(isDuplicate == false) {
       twitchRequest.twitchCall(streamName, twitchRequest.onSuccess);
@@ -138,7 +136,6 @@ var twitchRequest = {
 
   //Checks if the stream is currently online or offline
 	onSuccess: function(error, data, streamName){
-    console.log(streamName, data);
 
     if(data.stream === null){
       twitchRequest.streamOfflineCall(streamName, twitchRequest.onStreamOfflineSuccess);
@@ -188,7 +185,7 @@ var view = {
     streamInfoDiv.appendChild(this.createStreamName(streamInfo));
     streamInfoDiv.appendChild(this.createIsOnlineInfo(streamInfo));
     return streamInfoDiv;
-  },
+  },streamerList.checkDuplicateStream('bsb_krames');
 
   createStreamAvatar: function(streamInfo) {
     var profileAvatar = new Image();
