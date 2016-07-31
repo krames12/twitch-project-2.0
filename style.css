@@ -20,12 +20,17 @@ main {
     cursor: pointer;
 }
 
+.streamInfoDiv {
+    display: inline-block;
+    padding: 10px;
+}
+
 .streamStatusIcon {
     height: 10px;
     width: 10px;
     border-radius: 50%;
     display: inline-block;
-    margin: 5px;
+    margin: 20px;
 }
 
 .isOnline {
