@@ -323,3 +323,8 @@ var handlers = {
 }
 
 view.eventHandlerSetUp();
+
+// Auto generating starter streams
+streamerList.checkDuplicateStream('bsb_krames');
+streamerList.checkDuplicateStream('esl_csgo');
+streamerList.checkDuplicateStream('finalbosstv');
