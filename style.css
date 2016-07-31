@@ -1,7 +1,23 @@
 main {
     margin: auto;
+    margin-top: 10%;
     width: 40%;
     min-width: 320px;
+}
+
+#main-nav {
+    text-align: center;
+}
+
+.status-item {
+    display: inline-block;
+    padding: 10px;
+}
+
+.status-item:hover {
+    background-color: #6441A5;
+    color: white;
+    cursor: pointer;
 }
 
 .streamStatusIcon {
