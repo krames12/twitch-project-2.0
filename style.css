@@ -1,8 +1,8 @@
 main {
     margin: auto;
     margin-top: 10%;
-    width: 40%;
-    min-width: 320px;
+    width: 320px;
+    border: 1px solid black;
 }
 
 #main-nav {
@@ -20,9 +20,17 @@ main {
     cursor: pointer;
 }
 
+#stream-list {
+    padding: 10px;
+}
+
 .streamInfoDiv {
     display: inline-block;
     padding: 10px;
+}
+
+.streamOnlineStatus {
+    font-size: 0.75em;
 }
 
 .streamStatusIcon {
@@ -34,7 +42,11 @@ main {
 }
 
 .isOnline {
-    background-color: green;
+    background-color: #00ff00;
+    -webkit-animation: flicker 2s infinite;
+	-moz-animation: flicker 2s infinite;
+	-o-animation: flicker 2s infinite;
+	animation: flicker 2s infinite;
 }
 
 .isOffline {

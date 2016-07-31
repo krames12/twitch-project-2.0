@@ -137,6 +137,7 @@ var twitchRequest = {
   //Checks if the stream is currently online or offline
 	onSuccess: function(error, data, streamName){
 
+
     if(data.stream === null){
       twitchRequest.streamOfflineCall(streamName, twitchRequest.onStreamOfflineSuccess);
     } else {
@@ -185,7 +186,7 @@ var view = {
     streamInfoDiv.appendChild(this.createStreamName(streamInfo));
     streamInfoDiv.appendChild(this.createIsOnlineInfo(streamInfo));
     return streamInfoDiv;
-  },streamerList.checkDuplicateStream('bsb_krames');
+  },
 
   createStreamAvatar: function(streamInfo) {
     var profileAvatar = new Image();
