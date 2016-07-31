@@ -1,3 +1,9 @@
+main {
+    margin: auto;
+    width: 40%;
+    min-width: 320px;
+}
+
 .streamStatusIcon {
     height: 10px;
     width: 10px;
