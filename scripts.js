@@ -176,7 +176,6 @@ var view = {
       } else {
         offlineStreamList.appendChild(streamerLi);
       }
-
     }, this);
   },
 
@@ -218,13 +217,19 @@ var view = {
 
   createDeleteButton: function() {
     var deleteButton = document.createElement('button');
-    deleteButton.textContent = 'X';
     deleteButton.className = 'deleteButton';
+    deleteButton.appendChild(this.createDeleteButtonIcon());
     return deleteButton;
   },
 
+  createDeleteButtonIcon: function() {
+    var trashIcon = document.createElement('span');
+    trashIcon.className = 'deleteButtonIcon fa fa-trash fa-lg';
+    return trashIcon;
+  },
+
   createStreamStatusIcon: function(streamInfo) {
-    var streamStatusIcon = document.createElement('div');
+    var streamStatusIcon = document.createElement('span');
 
     if(streamInfo.isOnline === true) {
       streamStatusIcon.className = 'streamStatusIcon isOnline';
