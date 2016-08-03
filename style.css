@@ -100,10 +100,8 @@ main {
     padding: 5px;
     margin-top: 15px;
     float: right;
-}
-
-.deleteButton:after {
-    content: "\2718";
+    height: 20px;
+    width: 20px;
 }
 
 .hidden {

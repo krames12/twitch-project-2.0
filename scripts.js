@@ -217,7 +217,7 @@ var view = {
 
   createDeleteButton: function() {
     var deleteButton = document.createElement('button');
-    deleteButton.className = 'deleteButton';
+    deleteButton.className = 'deleteButton fa fa-trash fa-lg';
     return deleteButton;
   },
 
@@ -273,7 +273,7 @@ var view = {
     streamDocumentUl.addEventListener('click', function(event) {
       var elementClicked = event.target;
 
-      if(elementClicked.className === 'deleteButton') {
+      if(elementClicked.className === 'deleteButton fa fa-trash fa-lg') {
         handlers.deleteStreamItem(parseInt(elementClicked.parentNode.id));
       }
     });
