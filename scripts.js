@@ -218,14 +218,7 @@ var view = {
   createDeleteButton: function() {
     var deleteButton = document.createElement('button');
     deleteButton.className = 'deleteButton';
-    deleteButton.appendChild(this.createDeleteButtonIcon());
     return deleteButton;
-  },
-
-  createDeleteButtonIcon: function() {
-    var trashIcon = document.createElement('span');
-    trashIcon.className = 'deleteButtonIcon fa fa-trash fa-lg';
-    return trashIcon;
   },
 
   createStreamStatusIcon: function(streamInfo) {

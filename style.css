@@ -82,10 +82,6 @@ main {
     float: right;
 }
 
-.deleteButtonIcon {
-    z-index: -2;
-}
-
 .isOnline {
     background-color: #00ff00;
     -webkit-animation: flicker 2s infinite;
@@ -104,6 +100,10 @@ main {
     padding: 5px;
     margin-top: 15px;
     float: right;
+}
+
+.deleteButton:after {
+    content: "\2718";
 }
 
 .hidden {
