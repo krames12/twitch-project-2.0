@@ -8,7 +8,10 @@ main {
     width: 100%;
     max-width: 420px;
     min-width: 320px;
-    border: 1px solid #ecf0f1;
+    border: 1px solid #6441A5;
+    -webkit-box-shadow: 10px 10px 18px 0px rgba(0,0,0,0.40);
+    -moz-box-shadow: 10px 10px 18px 0px rgba(0,0,0,0.40);
+    box-shadow: 10px 10px 18px 0px rgba(0,0,0,0.40);
 }
 
 #main-nav {
@@ -85,10 +88,6 @@ main {
 
 .isOnline {
     background-color: #00ff00;
-    -webkit-animation: flicker 2s infinite;
-	-moz-animation: flicker 2s infinite;
-	-o-animation: flicker 2s infinite;
-	animation: flicker 2s infinite;
 }
 
 .isOffline {
