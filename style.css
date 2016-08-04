@@ -56,6 +56,10 @@ main {
     padding: 5px;
 }
 
+.streamerLi:hover {
+    border-left: 3px solid #6441A5;
+}
+
 .profileAvatar {
     height: 50px;
     width: 50px;
@@ -77,8 +81,8 @@ main {
 .streamStatusIcon {
     height: 10px;
     width: 10px;
-    border-radius: 50%;;
-    margin-bottom: 17px;
+    border-radius: 50%;
+    margin: 20px;
     float: right;
 }
 
@@ -98,7 +102,7 @@ main {
     border: none;
     background-color: white;
     padding: 5px;
-    margin-top: 15px;
+    margin-top: 13px;
     float: right;
     height: 20px;
     width: 20px;
