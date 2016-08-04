@@ -1,6 +1,4 @@
-body {
-    font-family: 'Lato', sans-serif;
-}
+body { font-family: 'Lato', sans-serif; }
 
 main {
     margin: auto;
@@ -56,9 +54,7 @@ main {
     padding: 5px;
 }
 
-.streamerLi:hover {
-    border-left: 3px solid #6441A5;
-}
+.streamerLi:hover { border-left: 3px solid #6441A5; }
 
 .profileAvatar {
     height: 50px;
@@ -74,9 +70,7 @@ main {
     margin-left: 5px;
 }
 
-.streamOnlineStatus {
-    font-size: 0.75em;
-}
+.streamOnlineStatus { font-size: 0.75em; }
 
 .streamStatusIcon {
     height: 10px;
@@ -86,13 +80,9 @@ main {
     float: right;
 }
 
-.isOnline {
-    background-color: #00ff00;
-}
+.isOnline { background-color: #00ff00; }
 
-.isOffline {
-    background-color: grey;
-}
+.isOffline { background-color: grey; }
 
 .deleteButton {
     border: none;
@@ -104,22 +94,16 @@ main {
     width: 20px;
 }
 
-.hidden {
-    display: none;
-}
+.hidden { display: none; }
 
 footer {
     text-align: center;
     margin-top: 20px;
 }
 
-footer p {
-    margin-bottom: 10px;
-}
+footer p { margin-bottom: 10px; }
 
-footer a {
-    text-decoration: none;
-}
+footer a { text-decoration: none; }
 
 .social-icon, social-icon:visited {
     color: #4d4d4d;
@@ -129,5 +113,11 @@ footer a {
 }
 
 .social-icon:hover {
-    transform: scale(1.5);
+    transform: scale(1.4);
 }
+
+.social-icon-github:hover { color: black; }
+
+.social-icon-twitter:hover { color: #00aced; }
+
+.social-icon-linkedin:hover { color: #007bb6; }
