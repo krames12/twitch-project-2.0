@@ -4,7 +4,7 @@ body {
 
 main {
     margin: auto;
-    margin-top: 10%;
+    margin-top: 5%;
     width: 100%;
     max-width: 420px;
     min-width: 320px;
@@ -107,4 +107,24 @@ main {
 
 .hidden {
     display: none;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+.social-icon, social-icon:visited {
+    color: #4d4d4d;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+    margin: 5px;
+}
+
+.social-icon:hover {
+    transform: scale(1.5);
 }
