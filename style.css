@@ -118,6 +118,10 @@ footer p {
     margin-bottom: 10px;
 }
 
+footer a {
+    text-decoration: none;
+}
+
 .social-icon, social-icon:visited {
     color: #4d4d4d;
     text-decoration: none;
