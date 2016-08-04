@@ -9,9 +9,6 @@ main {
     max-width: 420px;
     min-width: 320px;
     border: 1px solid #ecf0f1;
-    -webkit-box-shadow: 5px 5px 5px 2px rgba(219,221,222,0.60);
-    -moz-box-shadow: 5px 5px 5px 2px rgba(219,221,222,0.60);
-    box-shadow: 5px 5px 5px 2px rgba(219,221,222,0.60);
 }
 
 #main-nav {
