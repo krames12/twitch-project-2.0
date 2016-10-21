@@ -92,6 +92,7 @@ main {
     float: right;
     height: 20px;
     width: 20px;
+    cursor: pointer;
 }
 
 .hidden { display: none; }
@@ -112,9 +113,7 @@ footer a { text-decoration: none; }
     margin: 5px;
 }
 
-.social-icon:hover {
-    transform: scale(1.4);
-}
+.social-icon:hover { transform: scale(1.4); }
 
 .social-icon-github:hover { color: black; }
 

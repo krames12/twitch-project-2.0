@@ -1,7 +1,7 @@
 // Anything to do with streamer array directly
 var streamerList = {
   streamers: [],
-  
+
   addOnlineStream: function(streamData) {
     this.streamers.push({
     streamName: streamData.stream.channel.display_name,
@@ -24,12 +24,12 @@ var streamerList = {
 
     view.displayStreams();
   },
-  
+
   deleteStream: function(position) {
     console.log('deleting position', position);
     this.streamers.splice(position, 1);
   },
-  
+
   //Checks for duplicates and give error if that is the case
   checkDuplicateStream: function(streamName) {
     //crazy bug about reloading the page once it gets to streamName
@@ -42,7 +42,7 @@ var streamerList = {
         view.displayStreams();
       }
     });
-    
+
     if(isDuplicate == false) {
       twitchRequest.twitchCall(streamName, twitchRequest.onSuccess);
     }
@@ -54,7 +54,7 @@ var twitchRequest = {
   twitchCall: function(streamName, callbackFunction){
     var data;
     var request = new XMLHttpRequest();
-    request.open('GET', 'https://api.twitch.tv/kraken/streams/' + streamName + '?', true);
+    request.open('GET', 'https://api.twitch.tv/kraken/streams/' + streamName + '?client_id=' + 'j2lohw4nfde7tnun04hin5r14yc6y3w', true);
 
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
@@ -73,7 +73,7 @@ var twitchRequest = {
     request.send();
   },
 
-  // if the stream is offline, get info 
+  // if the stream is offline, get info
   streamOfflineCall: function (streamName, callbackFunction) {
     var data;
     var request = new XMLHttpRequest();
@@ -237,7 +237,7 @@ var view = {
         handlers.deleteStreamItem(parseInt(elementClicked.parentNode.id));
       }
     });
-    
+
     // Add Stream Input event handler
     var addStreamInput = document.querySelector('#add-stream-input');
     addStreamInput.addEventListener('submit', function(event) {
@@ -263,7 +263,7 @@ var view = {
     });
   }
 }
-  
+
 var handlers = {
   addStreamInput: function(){
     var addStreamInput = document.querySelector('#add-stream-input');
@@ -271,7 +271,7 @@ var handlers = {
     streamerList.checkDuplicateStream(addStreamInput.value);
     addStreamInput.value = '';
   },
- 
+
   deleteStreamItem: function(position) {
     streamerList.deleteStream(position);
     view.displayStreams();
@@ -281,6 +281,6 @@ var handlers = {
 view.eventHandlerSetUp();
 
 // Auto generating starter streams
-streamerList.checkDuplicateStream('bsb_krames');
+streamerList.checkDuplicateStream('slootbag');
 streamerList.checkDuplicateStream('esl_csgo');
 streamerList.checkDuplicateStream('finalbosstv');
